@@ -1,0 +1,42 @@
+Create databse assignment01;
+
+use assignment01;
+ 
+CREATE TABLE Salutation1(
+Salutationid INT NOT NULL PRIMARY KEY,
+Salutation VARCHAR(30)
+);
+
+INSERT INTO Salutation( Salutationid , Salutation)
+VALUES(1, 'Mr.'),(2, 'Ms.'),(3, 'Mrs.'),(4, 'Dr.');
+
+SELECT * FROM Salutation;
+===========================================================================
+
+CREATE TABLE membership(
+membership_id INT NOT NULL PRIMARY KEY,
+fullname VARCHAR(20),
+physicaladdress VARCHAR(50),
+Salutationid INT NOT NULL,
+FOREIGN KEY(Salutationid) REFERENCES Salutation(Salutationid)
+);
+
+INSERT INTO membership (membership_id, fullname , physicaladdress,Salutationid)
+VALUES (1, 'Janet Jones','First Street Plot No 4',2),(2, 'Robert Phill','3rd Street 34',1),(3, 'Robert Phill','5th Avenue',1);
+
+SELECT * FROM membership;
+
+============================================================================
+
+CREATE TABLE movies_rented1(
+membership_id INT NOT NULL,
+movies_rented VARCHAR(30),
+FOREIGN KEY(membership_id) REFERENCES membership(membership_id)
+);
+
+INSERT INTO movies_rented1 (membership_id, movies_rented )
+VALUES (1, 'Pirates of the Caribbean'),(1, 'Clash of Titans'),(2, 'Forgetting Sarah Marshall'),(2, 'Daddys Little Girl'),(3, 'Clash of Titans');
+
+SELECT * FROM movies_rented1;
+
+
